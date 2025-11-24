@@ -37,7 +37,9 @@ This project uses the structured approach where tools are automatically discover
 
 ### Tools
 
-Each tool is defined in its own file with the following structure:
+This template includes two example tools: `greet` and `weather`. Each tool is defined in its own file with the following structure:
+
+**Simple synchronous tool example (`greet.ts`):**
 
 ```typescript
 import { z } from "zod";
@@ -60,6 +62,46 @@ export const metadata: ToolMetadata = {
 
 export default function greet({ name }: InferSchema<typeof schema>) {
   return `Hello, ${name}!`;
+}
+```
+
+**Async tool example (`weather.ts`):**
+
+```typescript
+import { z } from "zod";
+import { type ToolMetadata, type InferSchema } from "xmcp";
+
+export const schema = {
+  city: z
+    .enum(["Buenos Aires", "San Francisco", "Berlin", "Tokyo", "New York"] as const)
+    .describe("The city to get weather for"),
+};
+
+export const metadata: ToolMetadata = {
+  name: "weather",
+  description: "Get current weather information for a city",
+  annotations: {
+    title: "Get weather",
+    readOnlyHint: true,
+    destructiveHint: false,
+    idempotentHint: true,
+  },
+};
+
+export default async function weather({
+  city,
+}: InferSchema<typeof schema>): Promise<string> {
+  // Map city to coordinates and fetch weather data
+  const cityCoords = getCityCoordinates(city);
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${cityCoords.lat}&longitude=${cityCoords.lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m`;
+  
+  const response = await fetch(url);
+  const data = await response.json();
+  
+  return `Weather for ${city}:
+Temperature: ${data.current.temperature_2m}°C
+Humidity: ${data.current.relative_humidity_2m}%
+Wind Speed: ${data.current.wind_speed_10m} km/h`;
 }
 ```
 
