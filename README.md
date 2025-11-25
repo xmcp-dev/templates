@@ -15,6 +15,49 @@
 
 This repository contains foundational templates for building with xmcp.
 
+## Getting Started
+
+### Prerequisites
+
+- Node.js >= 20.0.0
+- pnpm 9.15.0+
+
+### Installation
+
+```bash
+pnpm install
+```
+
+### Development
+
+```bash
+# Run all apps
+pnpm dev
+
+# Run a specific app
+pnpm dev --filter @xmcp-templates/nextjs
+```
+
+### Build
+
+```bash
+pnpm build
+```
+
+## Project Structure
+
+```
+├── apps/
+│   ├── nextjs/       # Next.js template
+│   ├── react/        # React template
+│   ├── openai/       # OpenAI template
+│   └── typescript/   # TypeScript template
+├── packages/
+│   └── catalog/      # Shared configs (TS, ESLint, Prettier)
+├── turbo.json        # Turborepo config
+└── pnpm-workspace.yaml
+```
+
 ## Available Templates
 
 ### TypeScript
