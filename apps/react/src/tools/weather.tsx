@@ -1,5 +1,5 @@
+import { useEffect, useState } from "react";
 import { type ToolMetadata } from "xmcp";
-import { useState, useEffect } from "react";
 
 export const metadata: ToolMetadata = {
   name: "weather",

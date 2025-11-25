@@ -1,5 +1,5 @@
+import { type InferSchema, type ResourceMetadata } from "xmcp";
 import { z } from "zod";
-import { type ResourceMetadata, type InferSchema } from "xmcp";
 
 export const schema = {
   userId: z.string().describe("The ID of the user"),

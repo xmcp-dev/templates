@@ -15,11 +15,12 @@
   },
   "dependencies": {
     "@xmcp-templates/catalog": "workspace:*",
-    "zod": "^3.24.4"
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "eslint": "^9.23.0",
-    "typescript": "^5.7.0",
-    "xmcp": "0.4.0"
+    "eslint": "catalog:",
+    "eslint-config-custom": "workspace:*",
+    "typescript": "catalog:",
+    "xmcp": "catalog:"
   }
 }

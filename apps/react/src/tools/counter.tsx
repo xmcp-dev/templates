@@ -1,5 +1,5 @@
-import { type ToolMetadata } from "xmcp";
 import { useState } from "react";
+import { type ToolMetadata } from "xmcp";
 
 export const metadata: ToolMetadata = {
   name: "counter",

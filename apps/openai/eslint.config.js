@@ -1,1 +1,1 @@
-module.exports = require("@xmcp-templates/catalog/eslint");
+module.exports = require("eslint-config-custom");

@@ -1,5 +1,5 @@
-import { z } from "zod";
 import { type InferSchema, type PromptMetadata } from "xmcp";
+import { z } from "zod";
 
 // Define the schema for prompt parameters
 export const schema = {

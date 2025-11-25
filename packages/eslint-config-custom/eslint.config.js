@@ -1,10 +1,12 @@
+const { defineConfig } = require("eslint/config");
+
 const typescriptPlugin = require("@typescript-eslint/eslint-plugin");
 const prettierPlugin = require("eslint-plugin-prettier");
 const simpleImportSortPlugin = require("eslint-plugin-simple-import-sort");
 const reactHooksPlugin = require("eslint-plugin-react-hooks");
 const typescriptParser = require("@typescript-eslint/parser");
 
-module.exports = [
+module.exports = defineConfig([
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
@@ -26,4 +28,7 @@ module.exports = [
       "simple-import-sort/exports": "error",
     },
   },
-];
+  {
+    ignores: [".xmcp/**", "dist/**", "node_modules/**"],
+  },
+]);
