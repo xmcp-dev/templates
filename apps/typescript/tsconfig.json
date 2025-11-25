@@ -1,0 +1,7 @@
+{
+  "extends": "@xmcp-templates/catalog/tsconfig/base.json",
+  "compilerOptions": {
+    "rootDir": "./src"
+  },
+  "include": ["xmcp-env.d.ts", "src/**/*.ts"]
+}

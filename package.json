@@ -1,10 +1,9 @@
 {
   "name": "xmcp-templates",
   "version": "0.0.0",
+  "private": true,
   "description": "Foundational templates for building with XMCP",
-  "keywords": [
-    "mcp"
-  ],
+  "keywords": ["mcp", "xmcp", "templates"],
   "homepage": "https://github.com/xmcp-dev/templates#readme",
   "bugs": {
     "url": "https://github.com/xmcp-dev/templates/issues"
@@ -15,19 +14,22 @@
   },
   "license": "ISC",
   "author": "xmcp",
-  "type": "commonjs",
-  "main": "eslint.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "clean": "turbo run clean && rm -rf node_modules"
   },
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.27.0",
-    "@typescript-eslint/parser": "^8.27.0",
-    "eslint": "^9.23.0",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-config-turbo": "^2.5.3",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "typescript-eslint": "^8.27.0"
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "turbo": "^2.6.1"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20.0.0"
   }
 }

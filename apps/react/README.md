@@ -21,6 +21,29 @@ This will start the development server with HTTP transport enabled.
 - **Counter**: A simple counter widget demonstrating state management
 - **Weather**: An interactive weather app that fetches real-time data
 
+## Monorepo Development
+
+This template is part of the xmcp-templates monorepo.
+
+### Shared Configurations
+
+- **TypeScript**: Extends `@xmcp-templates/catalog/tsconfig/react.json`
+- **ESLint**: Uses `@xmcp-templates/catalog/eslint`
+- **Prettier**: Uses `@xmcp-templates/catalog/prettier`
+
+### Commands
+
+```bash
+# From monorepo root
+pnpm dev          # Run all apps
+pnpm build        # Build all apps
+pnpm lint         # Lint all apps
+pnpm typecheck    # Type-check all apps
+
+# From this directory
+pnpm dev          # Run this app only
+```
+
 ## Learn More
 
 - [xmcp Documentation](https://xmcp.dev)
