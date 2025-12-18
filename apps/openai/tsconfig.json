@@ -1,4 +1,4 @@
 {
-  "extends": "@xmcp-templates/catalog/tsconfig/base.json",
+  "extends": "@xmcp-templates/config/tsconfig/base.json",
   "include": ["xmcp-env.d.ts", "src/**/*.ts"]
 }

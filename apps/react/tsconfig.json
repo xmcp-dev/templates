@@ -1,4 +1,4 @@
 {
-  "extends": "@xmcp-templates/catalog/tsconfig/react.json",
+  "extends": "@xmcp-templates/config/tsconfig/react.json",
   "include": ["xmcp-env.d.ts", "src/**/*.ts", "src/**/*.tsx"]
 }

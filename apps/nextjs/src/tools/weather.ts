@@ -75,4 +75,3 @@ Wind Speed: ${wind_speed_10m ?? "N/A"} km/h`;
     return `Error fetching weather data: ${error instanceof Error ? error.message : "Unknown error"}`;
   }
 }
-

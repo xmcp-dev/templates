@@ -1,10 +1,11 @@
 {
-  "name": "eslint-config-custom",
+  "name": "@xmcp-templates/eslint-config",
   "version": "0.0.0",
   "private": true,
-  "main": "./eslint.config.js",
+  "main": "./base.js",
   "exports": {
-    ".": "./eslint.config.js",
+    ".": "./base.js",
+    "./react": "./react.js",
     "./nextjs": "./nextjs.mjs"
   },
   "dependencies": {

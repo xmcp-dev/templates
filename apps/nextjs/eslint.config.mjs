@@ -1,1 +1,1 @@
-export { default } from "eslint-config-custom/nextjs";
+export { default } from "@xmcp-templates/eslint-config/nextjs";

@@ -73,7 +73,13 @@ import { type ToolMetadata, type InferSchema } from "xmcp";
 
 export const schema = {
   city: z
-    .enum(["Buenos Aires", "San Francisco", "Berlin", "Tokyo", "New York"] as const)
+    .enum([
+      "Buenos Aires",
+      "San Francisco",
+      "Berlin",
+      "Tokyo",
+      "New York",
+    ] as const)
     .describe("The city to get weather for"),
 };
 
@@ -94,10 +100,10 @@ export default async function weather({
   // Map city to coordinates and fetch weather data
   const cityCoords = getCityCoordinates(city);
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${cityCoords.lat}&longitude=${cityCoords.lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m`;
-  
+
   const response = await fetch(url);
   const data = await response.json();
-  
+
   return `Weather for ${city}:
 Temperature: ${data.current.temperature_2m}°C
 Humidity: ${data.current.relative_humidity_2m}%

@@ -1,1 +1,1 @@
-module.exports = require("eslint-config-custom");
+module.exports = require("@xmcp-templates/eslint-config/react");

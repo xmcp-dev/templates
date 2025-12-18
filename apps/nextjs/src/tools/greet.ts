@@ -22,4 +22,3 @@ export const metadata: ToolMetadata = {
 export default function greet({ name }: InferSchema<typeof schema>) {
   return `Hello, ${name}!`;
 }
-

@@ -1,5 +1,5 @@
 {
-  "extends": "@xmcp-templates/catalog/tsconfig/nextjs.json",
+  "extends": "@xmcp-templates/config/tsconfig/nextjs.json",
   "compilerOptions": {
     "paths": {
       "@/*": ["./*"],

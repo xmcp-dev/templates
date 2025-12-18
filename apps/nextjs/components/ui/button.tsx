@@ -29,23 +29,16 @@ export const buttonVariants = cva(
   }
 );
 
-type ButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color"> &
+type ButtonProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "color"
+> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
   };
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant,
-      color,
-      size,
-      asChild = false,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, variant, color, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
 
     return (
@@ -60,4 +53,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 
 export { Button };
-

@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "description": "Foundational templates for building with XMCP",
-  "keywords": ["mcp", "xmcp", "templates"],
+  "keywords": [
+    "mcp",
+    "xmcp",
+    "templates"
+  ],
   "homepage": "https://github.com/xmcp-dev/templates#readme",
   "bugs": {
     "url": "https://github.com/xmcp-dev/templates/issues"
