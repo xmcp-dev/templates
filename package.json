@@ -20,7 +20,12 @@
   "author": "xmcp",
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --ui tui",
+    "dev:nextjs": "turbo run dev --filter=@xmcp-templates/nextjs",
+    "dev:react": "turbo run dev --filter=@xmcp-templates/react",
+    "dev:typescript": "turbo run dev --filter=@xmcp-templates/typescript",
+    "dev:openai": "turbo run dev --filter=@xmcp-templates/openai",
+    "dev:gpt-monetization": "turbo run dev --filter=@xmcp-templates/gpt-monetization",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",

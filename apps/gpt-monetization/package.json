@@ -1,24 +1,21 @@
 {
-  "name": "@xmcp-templates/nextjs",
+  "name": "@xmcp-templates/gpt-monetization",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "xmcp dev & next dev --port 3000",
+    "dev": "xmcp dev & next dev --port 3002",
     "build": "xmcp build && next build",
-    "start": "next start --port 3000",
+    "start": "next start --port 3002",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist .next .xmcp"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "catalog:",
     "@xmcp-templates/config": "workspace:*",
-    "class-variance-authority": "catalog:",
-    "clsx": "catalog:",
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "tailwind-merge": "catalog:",
+    "stripe": "^20.0.0",
     "zod": "catalog:"
   },
   "devDependencies": {
@@ -26,8 +23,8 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "eslint": "catalog:",
     "@xmcp-templates/eslint-config": "workspace:*",
+    "eslint": "catalog:",
     "tailwindcss": "^4",
     "typescript": "catalog:",
     "xmcp": "catalog:"

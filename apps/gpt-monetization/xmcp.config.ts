@@ -1,12 +1,12 @@
-import { XmcpConfig } from "xmcp";
+import { type XmcpConfig } from "xmcp";
 
 const config: XmcpConfig = {
-  http: { port: 3001 },
+  http: { port: 3003 },
   experimental: {
     adapter: "nextjs",
   },
   paths: {
-    tools: "./src/tools",
+    tools: "tools",
     prompts: false,
     resources: false,
   },

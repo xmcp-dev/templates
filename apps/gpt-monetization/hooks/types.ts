@@ -1,0 +1,138 @@
+const SET_GLOBALS_EVENT_TYPE = "openai:set_globals";
+
+export type OpenAIGlobals<
+  ToolInput = UnknownObject,
+  ToolOutput = UnknownObject,
+  ToolResponseMetadata = UnknownObject,
+  WidgetState = UnknownObject
+> = {
+  // visuals
+  theme: Theme;
+  view: View;
+  userAgent: UserAgent;
+  locale: string;
+
+  // layout
+  maxHeight: number;
+  displayMode: DisplayMode;
+  safeArea: SafeArea;
+
+  // state
+  toolInput: ToolInput;
+  toolOutput: ToolOutput | null;
+  toolResponseMetadata: ToolResponseMetadata | null;
+  widgetState: WidgetState | null;
+  setWidgetState: (state: WidgetState) => Promise<void>;
+};
+
+export type API = {
+  callTool: CallTool;
+  sendFollowUpMessage: (args: { prompt: string }) => Promise<void>;
+  openExternal(payload: { href: string }): void;
+
+  // Layout controls
+  requestDisplayMode: RequestDisplayMode;
+  requestModal: RequestModal;
+  notifyIntrinsicHeight(height: number): void;
+};
+
+export type OpenAIContextValue = API & OpenAIGlobals;
+
+export type UnknownObject = Record<string, unknown>;
+
+export type Theme = "light" | "dark";
+
+export type SafeAreaInsets = {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
+export type SafeArea = {
+  insets: SafeAreaInsets;
+};
+
+export type DeviceType = "mobile" | "tablet" | "desktop" | "unknown";
+
+export type UserAgent = {
+  device: { type: DeviceType };
+  capabilities: {
+    hover: boolean;
+    touch: boolean;
+  };
+};
+
+/** Display mode */
+export type View = {
+  mode?: "modal" | "inline";
+  params?: Record<string, unknown>;
+};
+export type DisplayMode = "pip" | "inline" | "fullscreen";
+export type RequestModal = (args: {
+  title: string;
+  params: Record<string, unknown>;
+  anchorElement?: HTMLElement | null;
+}) => Promise<void>;
+export type RequestDisplayMode = (args: { mode: DisplayMode }) => Promise<{
+  /**
+   * The granted display mode. The host may reject the request.
+   * For mobile, PiP is always coerced to fullscreen.
+   */
+  mode: DisplayMode;
+}>;
+
+export type ToolContent =
+  | {
+      type: "text";
+      text: string;
+    }
+  | {
+      /**
+       * Fallback shape covering future content types.
+       * Callers should feature-detect supported fields.
+       */
+      type: string;
+      [key: string]: unknown;
+    };
+
+export type CallToolResponse = {
+  content?: ToolContent[];
+  structuredContent?: UnknownObject | null;
+  _meta?: UnknownObject | null;
+  [key: string]: unknown;
+};
+
+/** Calling APIs */
+export type CallTool = (
+  name: string,
+  args: Record<string, unknown>
+) => Promise<CallToolResponse>;
+
+/** Extra events */
+export { SET_GLOBALS_EVENT_TYPE };
+export class SetGlobalsEvent extends CustomEvent<{
+  globals: Partial<OpenAIGlobals>;
+}> {
+  readonly type = SET_GLOBALS_EVENT_TYPE;
+
+  constructor(globals: Partial<OpenAIGlobals>) {
+    super(SET_GLOBALS_EVENT_TYPE, {
+      detail: { globals },
+    });
+  }
+}
+
+/**
+ * Global oai object injected by the web sandbox for communicating with chatgpt host page.
+ */
+declare global {
+  interface Window {
+    openai: API & OpenAIGlobals;
+    innerBaseUrl: string;
+  }
+
+  interface WindowEventMap {
+    [SET_GLOBALS_EVENT_TYPE]: SetGlobalsEvent;
+  }
+}

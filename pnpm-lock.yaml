@@ -78,6 +78,55 @@ importers:
         specifier: ^2.6.1
         version: 2.6.1
 
+  apps/gpt-monetization:
+    dependencies:
+      '@xmcp-templates/config':
+        specifier: workspace:*
+        version: link:../../packages/config
+      next:
+        specifier: 'catalog:'
+        version: 16.0.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react:
+        specifier: 'catalog:'
+        version: 19.2.0
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.2.0(react@19.2.0)
+      stripe:
+        specifier: ^20.0.0
+        version: 20.1.0(@types/node@22.19.1)
+      zod:
+        specifier: 'catalog:'
+        version: 3.25.76
+    devDependencies:
+      '@tailwindcss/postcss':
+        specifier: ^4
+        version: 4.1.17
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.19.1
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.7
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.2.3(@types/react@19.2.7)
+      '@xmcp-templates/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      eslint:
+        specifier: 'catalog:'
+        version: 9.39.1(jiti@2.6.1)
+      tailwindcss:
+        specifier: ^4
+        version: 4.1.17
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      xmcp:
+        specifier: 'catalog:'
+        version: 0.5.4(@swc/helpers@0.5.15)(hono@4.11.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(zod@3.25.76)
+
   apps/nextjs:
     dependencies:
       '@radix-ui/react-slot':
@@ -1482,6 +1531,7 @@ packages:
   next@16.0.4:
     resolution: {integrity: sha512-vICcxKusY8qW7QFOzTvnRL1ejz2ClTqDKtm1AcUjm2mPv/lVAdgpGNsftsPRIDJOXOjRQO68i1dM8Lp8GZnqoA==}
     engines: {node: '>=20.9.0'}
+    deprecated: This version has a security vulnerability. Please upgrade to a patched version. See https://nextjs.org/blog/CVE-2025-66478 for more details.
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
@@ -1692,6 +1742,15 @@ packages:
   strip-json-comments@3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
+
+  stripe@20.1.0:
+    resolution: {integrity: sha512-o1VNRuMkY76ZCq92U3EH3/XHm/WHp7AerpzDs4Zyo8uE5mFL4QUcv/2SudWsSnhBSp4moO2+ZoGCZ7mT8crPmQ==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@types/node': '>=16'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
 
   styled-jsx@5.1.6:
     resolution: {integrity: sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA==}
@@ -3276,6 +3335,12 @@ snapshots:
   statuses@2.0.2: {}
 
   strip-json-comments@3.1.1: {}
+
+  stripe@20.1.0(@types/node@22.19.1):
+    dependencies:
+      qs: 6.14.0
+    optionalDependencies:
+      '@types/node': 22.19.1
 
   styled-jsx@5.1.6(react@19.2.0):
     dependencies:
