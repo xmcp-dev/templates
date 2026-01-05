@@ -22,8 +22,8 @@
     "dev": "turbo run dev --ui tui",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format": "prettier --config ./.config/prettier.config.json --ignore-path ./.config/.prettierignore --write README.md package.json turbo.json",
+    "format:check": "prettier --config ./.config/prettier.config.json --ignore-path ./.config/.prettierignore --check README.md package.json turbo.json",
     "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
