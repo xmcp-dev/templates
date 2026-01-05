@@ -1,8 +1,7 @@
 {
   "name": "xmcp-templates",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Foundational templates for building with XMCP",
+  "version": "1.0.0",
+  "description": "Foundational templates for building with xmcp",
   "keywords": [
     "mcp",
     "xmcp",

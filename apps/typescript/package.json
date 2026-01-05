@@ -1,5 +1,5 @@
 {
-  "name": "@xmcp-templates/typescript",
+  "name": "xmcp-typescript",
   "version": "0.1.0",
   "private": true,
   "description": "An xmcp application with tool syntax",
@@ -8,10 +8,7 @@
   },
   "scripts": {
     "build": "xmcp build",
-    "dev": "xmcp dev",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist .xmcp"
+    "dev": "xmcp dev"
   },
   "dependencies": {
     "zod": "^4.3.5"
