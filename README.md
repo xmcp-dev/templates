@@ -17,11 +17,15 @@ A curated set of production-ready template projects for rapid MCP server develop
 npx create-xmcp-app --example <template-folder-name>
 ```
 
-Available folders live in `apps/` (e.g., `nextjs`, `react`, `openai`, `typescript`).
+Available folders live in the repository root (e.g., `nextjs`, `react`, `openai`, `typescript`).
 
 ## Contribute
 
-Add your own template under `apps/`, keep it minimal and documented, and open a PR. Community examples are welcome.
+Add your own template at the repository root, keep it minimal and documented, and open a PR. Community examples are welcome.
+
+## Formatting
+
+Prettier is scoped to repo-level files only. Run `pnpm format` from the root to format shared metadata; individual templates can keep their own formatting preferences.
 
 ## Learn more
 
