@@ -14,13 +14,10 @@
     "clean": "rm -rf dist .xmcp"
   },
   "dependencies": {
-    "@xmcp-templates/config": "workspace:*",
-    "zod": "catalog:"
+    "zod": "^4.3.5"
   },
   "devDependencies": {
-    "eslint": "catalog:",
-    "@xmcp-templates/eslint-config": "workspace:*",
-    "typescript": "catalog:",
-    "xmcp": "catalog:"
+    "typescript": "^5.9.3",
+    "xmcp": "latest"
   }
 }
