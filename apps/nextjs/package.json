@@ -1,14 +1,11 @@
 {
-  "name": "@xmcp-templates/nextjs",
+  "name": "xmcp-nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "xmcp dev & next dev --port 3000",
+    "dev": "xmcp dev & next dev",
     "build": "xmcp build && next build",
-    "start": "next start --port 3000",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist .next .xmcp"
+    "start": "next start"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",

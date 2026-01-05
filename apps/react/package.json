@@ -1,5 +1,5 @@
 {
-  "name": "@xmcp-templates/react",
+  "name": "xmcp-react",
   "version": "0.1.0",
   "private": true,
   "description": "Learn how to set up an xmcp server using ChatGPT widgets with React",
@@ -10,10 +10,7 @@
   "scripts": {
     "build": "xmcp build",
     "dev": "xmcp dev",
-    "start": "node dist/http.js",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist .xmcp"
+    "start": "node dist/http.js"
   },
   "dependencies": {
     "react": "^19.2.3",
