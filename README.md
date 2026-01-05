@@ -5,79 +5,25 @@
       <img alt="XMCP logo" src="https://assets.basehub.com/bf7c3bb1/303b8a62053c9d86ca3b972b5597ab5c/x.png" height="128">
     </picture>
   </a>
-  <h1>templates</h1>
-
-<a href="https://basement.studio"><img alt="xmcp logo" src="https://img.shields.io/badge/MADE%20BY%20basement.studio-000000.svg?style=for-the-badge&labelColor=000"></a>
-
+  <h1>xmcp Templates</h1>
+  <a href="https://basement.studio"><img alt="xmcp logo" src="https://img.shields.io/badge/MADE%20BY%20basement.studio-000000.svg?style=for-the-badge&labelColor=000"></a>
 </div>
 
-## Foundational Templates for xmcp
+A curated set of production-ready template projects for rapid MCP server development. Select a template, specify it with the `--example` flag when running `npx create-xmcp-app`, and bootstrap a fully configured application environment.
 
-This repository contains foundational templates for building with xmcp.
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js >= 20.0.0
-- pnpm 9.15.0+
-
-### Installation
+## Use a template (recommended)
 
 ```bash
-pnpm install
+npx create-xmcp-app --example <template-folder-name>
 ```
 
-### Development
+Available folders live in `apps/` (e.g., `nextjs`, `react`, `openai`, `typescript`).
 
-```bash
-# Run all apps
-pnpm dev
+## Contribute
 
-# Run a specific app
-pnpm dev --filter @xmcp-templates/nextjs
-```
-
-### Build
-
-```bash
-pnpm build
-```
-
-## Project Structure
-
-```
-├── apps/
-│   ├── nextjs/       # Next.js template
-│   ├── react/        # React template
-│   ├── openai/       # OpenAI template
-│   └── typescript/   # TypeScript template
-├── packages/
-│   └── catalog/      # Shared configs (TS, ESLint, Prettier)
-├── turbo.json        # Turborepo config
-└── pnpm-workspace.yaml
-```
-
-## Available Templates
-
-### TypeScript
-
-A complete xmcp application template with support for tools, prompts, and resources. This template demonstrates the structured approach where components are automatically discovered from their respective directories.
-
-### OpenAI
-
-A template for creating ChatGPT widgets using xmcp. This template is optimized for building interactive widgets that integrate seamlessly with OpenAI's ChatGPT interface.
-
-Includes example tools and demonstrates how to create widgets that work with ChatGPT's widget system.
-
-### React
-
-A template for creating ChatGPT widgets using xmcp and React. This template supports returning React components as part of the tool response.
-
-Includes example tools like a counter widget and weather app to demonstrate state management and real-time data fetching.
+Add your own template under `apps/`, keep it minimal and documented, and open a PR. Community examples are welcome.
 
 ## Learn more
 
-⊹ Visit [xmcp.dev](https://xmcp.dev?utm_source=templates&utm_medium=readme&utm_campaign=templates-readme) to learn more about the project.\
-⊹ Visit [xmcp.dev/docs](https://xmcp.dev/docs?utm_source=templates&utm_medium=readme&utm_campaign=templates-readme) to view the full documentation.\
-⊹ Visit [xmcp.dev/docs/integrations/openai](https://xmcp.dev/docs/integrations/openai?utm_source=templates&utm_medium=readme&utm_campaign=templates-readme) to learn about OpenAI widgets.
+- [xmcp.dev](https://xmcp.dev?utm_source=templates&utm_medium=readme&utm_campaign=templates-readme)
+- [Docs](https://xmcp.dev/docs?utm_source=templates&utm_medium=readme&utm_campaign=templates-readme)
