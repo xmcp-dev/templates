@@ -1,7 +1,7 @@
 import { XmcpConfig } from "xmcp";
 
 const config: XmcpConfig = {
-  http: { port: 3001 },
+  http: true,
   experimental: {
     adapter: "nextjs",
   },
