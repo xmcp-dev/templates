@@ -23,6 +23,12 @@ Available folders live in the repository root (e.g., `nextjs`, `react`, `openai`
 
 Add your own template at the repository root, keep it minimal and documented, and open a PR. Community examples are welcome.
 
+When adding a template:
+
+- Place metadata in `templates/<slug>/.config/template.meta.json` with `slug`, `name`, `description`, `category`, `tags`, and `readme.path`.
+- Put optional custom preview at `templates/<slug>/.config/preview.(png|webp|jpg|jpeg)`. The catalog generator will auto-detect it; if none is present, the site will use the default tech/category image.
+- Keep the README as docs (no frontmatter needed); the generator uses the README body plus the meta JSON to build `.templates/config.json`.
+
 ## Formatting
 
 Prettier is scoped to repo-level files only. Run `pnpm format` from the root to format shared metadata; individual templates can keep their own formatting preferences.

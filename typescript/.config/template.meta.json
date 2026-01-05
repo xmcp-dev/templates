@@ -1,0 +1,10 @@
+{
+  "slug": "typescript",
+  "name": "xmcp TypeScript Starter",
+  "description": "Baseline xmcp template with typed tools, prompts, and resources using HTTP transport.",
+  "category": "starter",
+  "tags": ["xmcp", "typescript", "tools", "prompts", "resources"],
+  "readme": {
+    "path": "templates/typescript/README.md"
+  }
+}

@@ -1,4 +1,6 @@
-# xmcp Application
+# xmcp TypeScript Starter
+
+This starter shows the minimal xmcp structure with HTTP transport enabled and typed tools/prompts/resources out of the box.
 
 This project was created with [create-xmcp-app](https://github.com/basementstudio/xmcp).
 
@@ -152,47 +154,14 @@ You can run the server for the transport built with:
 
 Given the selected transport method, you will have a custom start script added to the `package.json` file.
 
-For HTTP:
+Start the server with:
 
 ```bash
-npm run start-http
+npm run start
 # or
-yarn start-http
+yarn start
 # or
-pnpm start-http
-```
-
-For STDIO:
-
-```bash
-npm run start-stdio
-# or
-yarn start-stdio
-# or
-pnpm start-stdio
-```
-
-## Monorepo Development
-
-This template is part of the xmcp-templates monorepo.
-
-### Shared Configurations
-
-- **TypeScript**: Extends `@xmcp-templates/catalog/tsconfig/base.json`
-- **ESLint**: Uses `@xmcp-templates/catalog/eslint`
-- **Prettier**: Uses `@xmcp-templates/catalog/prettier`
-
-### Commands
-
-```bash
-# From monorepo root
-pnpm dev          # Run all apps
-pnpm build        # Build all apps
-pnpm lint         # Lint all apps
-pnpm typecheck    # Type-check all apps
-
-# From this directory
-pnpm dev          # Run this app only
+pnpm start
 ```
 
 ## Learn More
