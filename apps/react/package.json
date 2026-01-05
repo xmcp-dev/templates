@@ -16,17 +16,14 @@
     "clean": "rm -rf dist .xmcp"
   },
   "dependencies": {
-    "@xmcp-templates/config": "workspace:*",
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "zod": "catalog:"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "eslint": "catalog:",
-    "@xmcp-templates/eslint-config": "workspace:*",
-    "typescript": "catalog:",
-    "xmcp": "catalog:"
+    "@types/react": "^19.2.3",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3",
+    "xmcp": "latest"
   }
 }
