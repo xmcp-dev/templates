@@ -28,7 +28,7 @@ Then edit `.env` with your WorkOS credentials:
 WORKOS_API_KEY=sk_test_...
 WORKOS_CLIENT_ID=client_...
 WORKOS_AUTHKIT_DOMAIN=yourcompany.authkit.app
-BASE_URL=http://127.0.0.1:3002
+BASE_URL=http://127.0.0.1:3001
 ```
 
 ### 3. Run the Server
