@@ -9,9 +9,6 @@ export const schema = {
 export const metadata: ToolMetadata = {
   name: "greet",
   description: "Greet the user with their WorkOS identity",
-  annotations: {
-    title: "Greet User",
-  },
 };
 
 export default async function greet({ name }: InferSchema<typeof schema>): Promise<string> {
