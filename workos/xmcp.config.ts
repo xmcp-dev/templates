@@ -1,9 +1,7 @@
 import type { XmcpConfig } from "xmcp";
 
 const config: XmcpConfig = {
-  http: {
-    port: 3002,
-  },
+  http: true,
   paths: {
     tools: "./src/tools",
     prompts: false,
