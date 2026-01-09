@@ -1,5 +1,5 @@
 {
-  "name": "xmcp + WorkOS AuthKit",
+  "name": "WorkOS AuthKit",
   "description": "An MCP server with WorkOS AuthKit authentication",
   "category": "authentication",
   "tag": "workos"
