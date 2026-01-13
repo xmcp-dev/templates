@@ -11,9 +11,7 @@ export const metadata: ToolMetadata = {
   description: "Greet the user with their Clerk identity",
 };
 
-export default async function greet({
-  name,
-}: InferSchema<typeof schema>): Promise<string> {
+export default function greet({ name }: InferSchema<typeof schema>): string {
   const session = getSession();
 
   return `Hello, ${name}! Your Clerk user ID is ${session.userId}`;
