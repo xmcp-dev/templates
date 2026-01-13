@@ -1,0 +1,24 @@
+{
+  "name": "xmcp-clerk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "xmcp server with Clerk authentication",
+  "keywords": ["clerk", "authentication", "mcp"],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "xmcp build",
+    "dev": "xmcp dev",
+    "start": "node dist/http.js"
+  },
+  "dependencies": {
+    "@xmcp-dev/clerk": "latest",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.3",
+    "xmcp": "latest"
+  }
+}
