@@ -5,12 +5,6 @@ export const metadata: ToolMetadata = {
   name: "get-my-organizations",
   description:
     "Returns the user's organization memberships using the Clerk SDK directly",
-  annotations: {
-    title: "Get My Organizations",
-    readOnlyHint: true,
-    destructiveHint: false,
-    idempotentHint: true,
-  },
 };
 
 export default async function getMyOrganizations(): Promise<string> {
@@ -40,6 +34,6 @@ export default async function getMyOrganizations(): Promise<string> {
       memberships: formattedMemberships,
     },
     null,
-    2
+    2,
   );
 }

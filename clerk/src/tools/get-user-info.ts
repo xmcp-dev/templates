@@ -4,12 +4,6 @@ import { getSession, getUser } from "@xmcp-dev/clerk";
 export const metadata: ToolMetadata = {
   name: "get-user-info",
   description: "Get detailed user profile information from Clerk",
-  annotations: {
-    title: "Get User Info",
-    readOnlyHint: true,
-    destructiveHint: false,
-    idempotentHint: true,
-  },
 };
 
 export default async function getUserInfo(): Promise<string> {

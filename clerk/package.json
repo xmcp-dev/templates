@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "description": "xmcp server with Clerk authentication",
-  "keywords": ["clerk", "authentication", "mcp"],
+  "keywords": [
+    "clerk",
+    "authentication",
+    "mcp"
+  ],
   "engines": {
     "node": ">=20.0.0"
   },
@@ -14,7 +18,7 @@
   },
   "dependencies": {
     "@xmcp-dev/clerk": "latest",
-    "zod": "^4.0.0"
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

@@ -4,12 +4,6 @@ import { getSession, getUser } from "@xmcp-dev/clerk";
 export const metadata: ToolMetadata = {
   name: "whoami",
   description: "Returns the full Clerk user session and account information",
-  annotations: {
-    title: "Who Am I",
-    readOnlyHint: true,
-    destructiveHint: false,
-    idempotentHint: true,
-  },
 };
 
 export default async function whoami(): Promise<string> {

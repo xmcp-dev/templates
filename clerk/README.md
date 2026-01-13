@@ -10,9 +10,10 @@ Before running the server, you need to configure Clerk:
 
 1. Go to your [Clerk Dashboard](https://dashboard.clerk.com)
 2. Create a new application or use an existing one
-3. Navigate to **API Keys** to get your Secret Key
-4. Note your Clerk domain (e.g., `your-app.clerk.accounts.dev`)
-5. Go to **Configure** > **OAuth Applications** and enable **Dynamic Client Registration**
+3. Go to **Configure** and access **API Keys** to get:
+   - **Secret Key** (`sk_...`)
+   - **Frontend API** URL (`your-app.clerk.accounts.dev`)
+4. Click on **Development**, enter **OAuth Applications** and enable **Dynamic Client Registration**
 
 ### 2. Environment Variables
 
@@ -131,6 +132,19 @@ The client isn't sending a token. Make sure:
 - Dynamic Client Registration is enabled in Clerk
 - The client completed the OAuth flow
 
+### Missing Configuration Errors
+
+If you see `"[Clerk] Missing required config: ..."` at startup:
+- Ensure all required environment variables are set (`CLERK_SECRET_KEY`, `CLERK_DOMAIN`, `BASE_URL`)
+- Check your `.env` file is being loaded correctly
+
+### Session or Client Not Initialized
+
+If `getSession()`, `getUser()`, or `getClient()` throws `"... not initialized"`:
+- Ensure `clerkProvider` is exported as default from `middleware.ts`
+- Ensure the tool is called on a route under `/mcp/*`
+- Don't call these functions at module load time—only inside tool handlers
+
 ### "Token has expired"
 
 Access tokens are short-lived. The client should automatically refresh. If it persists:
@@ -143,7 +157,14 @@ Access tokens are short-lived. The client should automatically refresh. If it pe
 - Verify your `CLERK_DOMAIN` matches your Clerk application's Frontend API
 - Make sure you're using the right environment (test vs production)
 
+### Authentication Service Misconfigured
+
+If you see a `500` error with `"Authentication service misconfigured"`:
+- Your `CLERK_SECRET_KEY` is invalid or doesn't match your Clerk application
+- Double-check you're using the correct key for your environment (development vs production)
+
 ## Learn More
 
+- [Clerk Integration Guide](https://xmcp.dev/docs/integrations/clerk)
 - [xmcp Documentation](https://xmcp.dev/docs)
 - [Clerk Documentation](https://clerk.com/docs)
