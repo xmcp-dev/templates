@@ -1,0 +1,21 @@
+{
+  "name": "xmcp-auth0",
+  "version": "0.1.0",
+  "private": true,
+  "description": "xmcp server with Auth0 authentication",
+  "keywords": ["auth0", "authentication"],
+  "scripts": {
+    "build": "xmcp build",
+    "dev": "xmcp dev",
+    "start": "node dist/http.js"
+  },
+  "dependencies": {
+    "@xmcp-dev/auth0": "latest",
+    "zod": "^4.0.10"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.3",
+    "xmcp": "latest"
+  }
+}
