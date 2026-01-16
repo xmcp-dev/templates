@@ -5,6 +5,6 @@ export const metadata: ToolMetadata = {
   description: "Generate a random number",
 };
 
-export default function random_number(): number {
+export default function randomNumber(): number {
   return Math.floor(Math.random() * 100);
 }
