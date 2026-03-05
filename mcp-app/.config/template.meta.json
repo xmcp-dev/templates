@@ -1,0 +1,6 @@
+{
+  "name": "MCP App with React Widgets",
+  "description": "An MCP server with React widgets and Tailwind CSS styling",
+  "category": "ui",
+  "tags": ["react", "tailwind", "http"]
+}

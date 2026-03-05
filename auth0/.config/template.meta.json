@@ -1,0 +1,6 @@
+{
+  "name": "Auth0 Authentication",
+  "description": "An MCP server with Auth0 OAuth 2.0 authentication and JWT verification",
+  "category": "authentication",
+  "tags": ["auth0", "http"]
+}

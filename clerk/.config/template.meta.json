@@ -1,0 +1,6 @@
+{
+  "name": "Clerk Authentication",
+  "description": "An MCP server with Clerk authentication, session data and organization management",
+  "category": "authentication",
+  "tags": ["clerk", "http"]
+}

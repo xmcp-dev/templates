@@ -1,0 +1,6 @@
+{
+  "name": "React ChatGPT Widgets",
+  "description": "An MCP server with interactive React component widgets for ChatGPT",
+  "category": "chatgpt",
+  "tags": ["react", "widgets", "http"]
+}
