@@ -1,0 +1,6 @@
+{
+  "name": "GPT Monetization with Stripe",
+  "description": "A Next.js + MCP application for monetizing ChatGPT apps using Stripe",
+  "category": "monetization",
+  "tags": ["stripe", "chatgpt", "nextjs", "http"]
+}

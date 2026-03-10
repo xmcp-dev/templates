@@ -1,0 +1,6 @@
+{
+  "name": "Next.js Starter",
+  "description": "A full-stack MCP server built with Next.js and xmcp",
+  "category": "framework",
+  "tags": ["nextjs", "http"]
+}

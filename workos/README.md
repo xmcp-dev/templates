@@ -1,28 +1,36 @@
-# WorkOS Authentication with xmcp
+# xmcp WorkOS Template
 
-This project demonstrates how to create an authenticated MCP server using WorkOS AuthKit.
+An authenticated MCP server using WorkOS AuthKit for JWT-based authentication.
+
+## Features
+
+- WorkOS AuthKit JWT verification via JWKS endpoint
+- Session data via `getSession()`, full user data via `getUser()`
+- OAuth discovery endpoints auto-registered
+- Example tools: `greet`, `whoami`
+- HTTP transport with middleware-based auth
 
 ## Getting Started
 
-### 1. WorkOS Setup
+### Prerequisites
 
-Before running the server, you need to configure WorkOS:
+You need a [WorkOS](https://workos.com) account with:
+- MCP Auth enabled under **Connect** → **Configuration**
+- **Client ID Metadata Document (CIMD)** enabled for MCP client authentication
 
-1. Go to your [WorkOS Dashboard](https://dashboard.workos.com)
-2. Navigate to **Connect** → **Configuration**
-3. Enable **MCP Auth** settings:
-   - **Client ID Metadata Document (CIMD)** - Required for MCP clients to authenticate
-   - **Dynamic Client Registration (DCR)** - Optional, for backwards compatibility
+### 1. Create the project
 
-### 2. Environment Variables
+```bash
+npx create-xmcp-app --example workos
+```
 
-Copy the example environment file and fill in your credentials:
+### 2. Environment setup
 
 ```bash
 cp .env.example .env
 ```
 
-Then edit `.env` with your WorkOS credentials:
+Edit `.env` with your WorkOS credentials:
 
 ```bash
 WORKOS_API_KEY=sk_test_...
@@ -31,22 +39,19 @@ WORKOS_AUTHKIT_DOMAIN=yourcompany.authkit.app
 BASE_URL=http://127.0.0.1:3001
 ```
 
-### 3. Run the Server
+### 3. Install & run
 
 ```bash
-npm run dev
-# or
+pnpm install
 pnpm dev
 ```
-
-This will start the MCP server with HTTP transport and WorkOS authentication enabled.
 
 ## How It Works
 
 1. MCP clients send requests with `Authorization: Bearer <token>` header
 2. The middleware verifies the JWT using WorkOS AuthKit's JWKS endpoint
 3. Valid sessions are stored in AsyncLocalStorage context
-4. Tools can access session data via `getSession()` and `getUser()`
+4. Tools access session data via `getSession()` and `getUser()`
 
 ## Using Session Data in Tools
 
@@ -70,25 +75,16 @@ export default async function myTool() {
 
 ## OAuth Endpoints
 
-The plugin automatically registers these endpoints:
+The plugin automatically registers:
 
-- `GET /.well-known/oauth-protected-resource` - Resource server metadata
-- `GET /.well-known/oauth-authorization-server` - Authorization server metadata
+- `GET /.well-known/oauth-protected-resource` — Resource server metadata
+- `GET /.well-known/oauth-authorization-server` — Authorization server metadata
 
-## Monorepo Development
-
-This template is part of the xmcp-templates monorepo.
-
-### Commands
+## Deploy
 
 ```bash
-# From monorepo root
-pnpm dev          # Run all apps
-pnpm build        # Build all apps
-pnpm typecheck    # Type-check all apps
-
-# From this directory
-pnpm dev          # Run this app only
+pnpm build
+node dist/http.js
 ```
 
 ## Learn More

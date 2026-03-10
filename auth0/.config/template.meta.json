@@ -1,0 +1,6 @@
+{
+  "name": "Auth0 Authentication",
+  "description": "An MCP server with Auth0 authentication and tools to interact with Auth0 client.",
+  "category": "authentication",
+  "tags": ["auth0", "http"]
+}

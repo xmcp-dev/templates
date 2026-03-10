@@ -1,32 +1,52 @@
-# xmcp Application
+# xmcp TypeScript Template
 
-This project was created with [create-xmcp-app](https://github.com/basementstudio/xmcp).
+A minimal MCP server with tools, prompts, and resources using TypeScript and HTTP transport.
+
+## Features
+
+- File-based routing for tools, prompts, and resources
+- Zod schema validation for all inputs
+- Type-safe with `InferSchema` utility
+- HTTP and STDIO transport support
+- Auto-discovery of tools, prompts, and resources from directories
 
 ## Getting Started
 
-First, run the development server:
+### 1. Create the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+npx create-xmcp-app --example typescript
+```
+
+### 2. Install & run
+
+```bash
+pnpm install
 pnpm dev
 ```
 
-This will start the MCP server with the selected transport method.
+The MCP server will start with HTTP transport at `http://localhost:3001`.
 
 ## Project Structure
 
-This project uses the structured approach where tools, prompts, and resources are automatically discovered from their respective directories:
+```
+├── src/
+│   ├── tools/
+│   │   └── greet.ts              # Example tool
+│   ├── prompts/
+│   │   └── review-code.ts        # Example prompt
+│   └── resources/
+│       ├── (config)/app.ts       # Static resource
+│       └── (users)/[userId]/     # Dynamic resource with URI params
+│           └── index.ts
+├── xmcp.config.ts                # Server configuration
+├── package.json
+└── tsconfig.json
+```
 
-- `src/tools` - Tool definitions
-- `src/prompts` - Prompt templates
-- `src/resources` - Resource handlers
+## Adding Tools
 
-### Tools
-
-Each tool is defined in its own file with the following structure:
+Create a new `.ts` file in `src/tools/`:
 
 ```typescript
 import { z } from "zod";
@@ -52,9 +72,11 @@ export default function greet({ name }: InferSchema<typeof schema>) {
 }
 ```
 
-### Prompts
+The tool is automatically discovered and registered.
 
-Prompts are template definitions for AI interactions:
+## Adding Prompts
+
+Create a new `.ts` file in `src/prompts/`:
 
 ```typescript
 import { z } from "zod";
@@ -76,9 +98,9 @@ export default function reviewCode({ code }: InferSchema<typeof schema>) {
 }
 ```
 
-### Resources
+## Adding Resources
 
-Resources provide data or content with URI-based access:
+Create a new `.ts` file in `src/resources/`. Use folder structure to define the URI — for example, `(users)/[userId]/profile.ts` maps to `users://{userId}/profile`.
 
 ```typescript
 import { z } from "zod";
@@ -99,100 +121,22 @@ export default function handler({ userId }: InferSchema<typeof schema>) {
 }
 ```
 
-## Adding New Components
+## Deploy
 
-### Adding New Tools
-
-To add a new tool:
-
-1. Create a new `.ts` file in the `src/tools` directory
-2. Export a `schema` object defining the tool parameters using Zod
-3. Export a `metadata` object with tool information
-4. Export a default function that implements the tool logic
-
-### Adding New Prompts
-
-To add a new prompt:
-
-1. Create a new `.ts` file in the `src/prompts` directory
-2. Export a `schema` object defining the prompt parameters using Zod
-3. Export a `metadata` object with prompt information and role
-4. Export a default function that returns the prompt text
-
-### Adding New Resources
-
-To add a new resource:
-
-1. Create a new `.ts` file in the `src/resources` directory
-2. Use folder structure to define the URI (e.g., `(users)/[userId]/profile.ts` → `users://{userId}/profile`)
-3. Export a `schema` object for dynamic parameters (optional for static resources)
-4. Export a `metadata` object with resource information
-5. Export a default function that returns the resource content
-
-## Building for Production
-
-To build your project for production:
+Build for production:
 
 ```bash
-npm run build
-# or
-yarn build
-# or
 pnpm build
 ```
 
-This will compile your TypeScript code and output it to the `dist` directory.
-
-## Running the Server
-
-You can run the server for the transport built with:
-
-- HTTP: `node dist/http.js`
-- STDIO: `node dist/stdio.js`
-
-Given the selected transport method, you will have a custom start script added to the `package.json` file.
-
-For HTTP:
+Run the compiled server:
 
 ```bash
-npm run start-http
-# or
-yarn start-http
-# or
-pnpm start-http
-```
+# HTTP transport
+node dist/http.js
 
-For STDIO:
-
-```bash
-npm run start-stdio
-# or
-yarn start-stdio
-# or
-pnpm start-stdio
-```
-
-## Monorepo Development
-
-This template is part of the xmcp-templates monorepo.
-
-### Shared Configurations
-
-- **TypeScript**: Extends `@xmcp-templates/catalog/tsconfig/base.json`
-- **ESLint**: Uses `@xmcp-templates/catalog/eslint`
-- **Prettier**: Uses `@xmcp-templates/catalog/prettier`
-
-### Commands
-
-```bash
-# From monorepo root
-pnpm dev          # Run all apps
-pnpm build        # Build all apps
-pnpm lint         # Lint all apps
-pnpm typecheck    # Type-check all apps
-
-# From this directory
-pnpm dev          # Run this app only
+# STDIO transport
+node dist/stdio.js
 ```
 
 ## Learn More

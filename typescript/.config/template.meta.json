@@ -1,0 +1,6 @@
+{
+  "name": "xmcp TypeScript Starter",
+  "description": "Baseline xmcp template with typed tools, prompts, and resources using HTTP transport.",
+  "category": "http",
+  "tags": ["typescript", "http"]
+}

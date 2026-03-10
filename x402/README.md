@@ -1,18 +1,34 @@
-# x402 Monetization with xmcp
+# xmcp x402 Template
 
-This project demonstrates how to monetize MCP tools with x402 using USDC micropayments on Base.
+Monetize MCP tools with x402 using USDC micropayments on Base.
+
+## Features
+
+- x402 payment middleware for per-tool pricing
+- Free and paid tools in the same server
+- Custom price overrides per tool
+- USDC payments on Base (Sepolia for testing, mainnet for production)
+- Example tools: `greet` (paid, $0.01), `hash-string` (paid, $0.05), `random-number` (free)
 
 ## Getting Started
 
-### 1. Environment Variables
+### Prerequisites
 
-Copy the example environment file and fill in your wallet:
+You need a wallet address to receive USDC payments.
+
+### 1. Create the project
+
+```bash
+npx create-xmcp-app --example x402
+```
+
+### 2. Environment setup
 
 ```bash
 cp .env.example .env
 ```
 
-Then edit `.env`:
+Edit `.env` with your wallet address:
 
 ```bash
 X402_WALLET=0xYOUR_WALLET_ADDRESS
@@ -21,52 +37,57 @@ X402_WALLET=0xYOUR_WALLET_ADDRESS
 # X402_FACILITATOR=https://x402.org/facilitator
 ```
 
-### 2. Run the Server
+### 3. Install & run
 
 ```bash
-npm run dev
-# or
+pnpm install
 pnpm dev
 ```
-
-This starts an HTTP MCP server with x402 payment middleware enabled.
 
 ## How It Works
 
-The template includes three tools:
+The middleware is configured in `src/middleware.ts` with default pricing:
 
-- `greet` - Paid tool that uses the middleware default price (`$0.01`)
-- `hash-string` - Paid tool with custom price override (`$0.05`)
-- `random-number` - Free tool with no payment required
+- **Default price:** `0.01` USDC per tool call
+- **Currency:** USDC
+- **Network:** `base-sepolia` (switch to `base` for production)
+- **Facilitator:** `https://x402.org/facilitator`
 
-Paid tools are wrapped with `paid()` from `@xmcp-dev/x402`.
+### Making Tools Paid
 
-## x402 Middleware
+Wrap tools with `paid()` from `@xmcp-dev/x402`:
 
-The provider is configured in `src/middleware.ts`:
+```typescript
+import { paid } from "@xmcp-dev/x402";
 
-- default price: `0.01` USDC
-- currency: `USDC`
-- network: `base-sepolia`
-- facilitator: `https://x402.org/facilitator` (default fallback)
+// Uses middleware default price ($0.01)
+export default paid(async function greet({ name }) {
+  return `Hello, ${name}!`;
+});
 
-`base-sepolia` is intended for testing. Switch to `base` for production workloads.
+// Custom price override ($0.05)
+export default paid(
+  { price: 0.05 },
+  async function hashString({ input }) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(input);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+  }
+);
+```
 
-## Monorepo Development
+Tools without the `paid()` wrapper are free.
 
-This template is part of the xmcp-templates monorepo.
-
-### Commands
+## Deploy
 
 ```bash
-# From monorepo root
-pnpm dev
 pnpm build
-pnpm typecheck
-
-# From this directory
-pnpm dev
+node dist/http.js
 ```
+
+For production, update your middleware to use `base` instead of `base-sepolia`.
 
 ## Learn More
 

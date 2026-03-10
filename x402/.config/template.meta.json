@@ -1,0 +1,6 @@
+{
+  "name": "x402 Monetization",
+  "description": "An MCP server with x402 payment middleware for USDC micropayments",
+  "category": "monetization",
+  "tags": ["x402", "payments", "http"]
+}
