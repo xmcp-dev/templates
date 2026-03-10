@@ -1,29 +1,37 @@
-# Clerk Authentication with xmcp
+# xmcp Clerk Template
 
-This template demonstrates how to create an authenticated MCP server using Clerk.
+An authenticated MCP server using Clerk for JWT-based authentication.
+
+## Features
+
+- Clerk JWT verification via JWKS endpoint
+- Session data via `getSession()`, full user data via `getUser()`
+- Direct Clerk SDK access via `getClient()`
+- OAuth discovery endpoints auto-registered
+- Example tools: `greet`, `whoami`, `get-user-info`, `get-my-organizations`
+- HTTP transport with middleware-based auth
 
 ## Getting Started
 
-### 1. Clerk Setup
+### Prerequisites
 
-Before running the server, you need to configure Clerk:
+You need a [Clerk](https://clerk.com) account with:
+- An application (create one or use existing)
+- **Dynamic Client Registration** enabled under **Configure** → **Development** → **OAuth Applications**
 
-1. Go to your [Clerk Dashboard](https://dashboard.clerk.com)
-2. Create a new application or use an existing one
-3. Go to **Configure** and access **API Keys** to get:
-   - **Secret Key** (`sk_...`)
-   - **Frontend API** URL (`your-app.clerk.accounts.dev`)
-4. Click on **Development**, enter **OAuth Applications** and enable **Dynamic Client Registration**
+### 1. Create the project
 
-### 2. Environment Variables
+```bash
+npx create-xmcp-app --example clerk
+```
 
-Copy the example environment file and fill in your credentials:
+### 2. Environment setup
 
 ```bash
 cp .env.example .env
 ```
 
-Then edit `.env` with your Clerk credentials:
+Edit `.env` with your Clerk credentials:
 
 ```bash
 CLERK_SECRET_KEY=sk_test_...
@@ -31,30 +39,19 @@ CLERK_DOMAIN=your-app.clerk.accounts.dev
 BASE_URL=http://127.0.0.1:3001
 ```
 
-### 3. Install Dependencies
+### 3. Install & run
 
 ```bash
 pnpm install
-# or
-npm install
-```
-
-### 4. Run the Server
-
-```bash
 pnpm dev
-# or
-npm run dev
 ```
-
-This will start the MCP server with HTTP transport and Clerk authentication enabled.
 
 ## How It Works
 
 1. MCP clients send requests with `Authorization: Bearer <token>` header
 2. The middleware verifies the JWT using Clerk's JWKS endpoint
 3. Valid sessions are stored in AsyncLocalStorage context
-4. Tools can access session data via `getSession()` and `getUser()`
+4. Tools access session data via `getSession()` and `getUser()`
 
 ## Using Session Data in Tools
 
@@ -92,36 +89,18 @@ export default async function myTool() {
 | `expiresAt` | `Date` | Token expiration time |
 | `issuedAt` | `Date` | Token issue time |
 
-## Available Tools
-
-This template includes four tools:
-
-- **whoami** - Returns full session and user account information
-- **greet** - Greets a person by name and shows your Clerk user ID
-- **get-user-info** - Fetches detailed user profile from Clerk API
-- **get-my-organizations** - Lists all organization memberships
-
 ## OAuth Endpoints
 
-The plugin automatically registers these endpoints:
+The plugin automatically registers:
 
-- `GET /.well-known/oauth-protected-resource` - Resource server metadata
-- `GET /.well-known/oauth-authorization-server` - Authorization server metadata
+- `GET /.well-known/oauth-protected-resource` — Resource server metadata
+- `GET /.well-known/oauth-authorization-server` — Authorization server metadata
 
-## Building for Production
+## Deploy
 
 ```bash
 pnpm build
-# or
-npm run build
-```
-
-Then start the server:
-
-```bash
-pnpm start
-# or
-npm start
+node dist/http.js
 ```
 
 ## Troubleshooting
@@ -143,7 +122,7 @@ If you see `"[Clerk] Missing required config: ..."` at startup:
 If `getSession()`, `getUser()`, or `getClient()` throws `"... not initialized"`:
 - Ensure `clerkProvider` is exported as default from `middleware.ts`
 - Ensure the tool is called on a route under `/mcp/*`
-- Don't call these functions at module load time—only inside tool handlers
+- Don't call these functions at module load time — only inside tool handlers
 
 ### "Token has expired"
 
@@ -165,6 +144,6 @@ If you see a `500` error with `"Authentication service misconfigured"`:
 
 ## Learn More
 
-- [Clerk Integration Guide](https://xmcp.dev/docs/integrations/clerk)
 - [xmcp Documentation](https://xmcp.dev/docs)
+- [Clerk Integration Guide](https://xmcp.dev/docs/integrations/clerk)
 - [Clerk Documentation](https://clerk.com/docs)

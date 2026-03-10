@@ -1,50 +1,76 @@
-# ChatGPT React Widgets with xmcp
+# xmcp React Widgets Template
 
-This project demonstrates how to create ChatGPT widgets using xmcp and React.
-
-## Getting Started
-
-```bash
-npm run dev
-```
-
-This will start the development server with HTTP transport enabled.
+Build interactive ChatGPT widgets using React and xmcp.
 
 ## Features
 
-- **React Components**: Build interactive widgets using React
-- **Server-Side Rendering**: Automatically enabled whenever React tools are present
-- **TypeScript**: Full TypeScript support for type safety
+- React component tools rendered as interactive widgets in ChatGPT
+- Server-side rendering automatically enabled for React tools
+- TypeScript support with Zod schema validation
+- HTTP transport
+- Example tools: `counter` (state management) and `weather` (external API)
 
-## Example Tools
+## Getting Started
 
-- **Counter**: A simple counter widget demonstrating state management
-- **Weather**: An interactive weather app that fetches real-time data
-
-## Monorepo Development
-
-This template is part of the xmcp-templates monorepo.
-
-### Shared Configurations
-
-- **TypeScript**: Extends `@xmcp-templates/catalog/tsconfig/react.json`
-- **ESLint**: Uses `@xmcp-templates/catalog/eslint`
-- **Prettier**: Uses `@xmcp-templates/catalog/prettier`
-
-### Commands
+### 1. Create the project
 
 ```bash
-# From monorepo root
-pnpm dev          # Run all apps
-pnpm build        # Build all apps
-pnpm lint         # Lint all apps
-pnpm typecheck    # Type-check all apps
+npx create-xmcp-app --example react
+```
 
-# From this directory
-pnpm dev          # Run this app only
+### 2. Install & run
+
+```bash
+pnpm install
+pnpm dev
+```
+
+The MCP server will start with HTTP transport at `http://localhost:3001`.
+
+## Project Structure
+
+```
+├── src/
+│   └── tools/
+│       ├── counter.tsx           # Interactive counter widget
+│       └── weather.tsx           # Weather widget with API data
+├── xmcp.config.ts                # Server configuration
+├── package.json
+└── tsconfig.json
+```
+
+## Creating Widget Tools
+
+Create a `.tsx` file in `src/tools/` that exports a React component as the default:
+
+```tsx
+import { z } from "zod";
+import { type InferSchema, type ToolMetadata } from "xmcp";
+
+export const schema = {
+  name: z.string().describe("The name to display"),
+};
+
+export const metadata: ToolMetadata = {
+  name: "my-widget",
+  description: "Display an interactive widget",
+};
+
+export default function MyWidget({ name }: InferSchema<typeof schema>) {
+  return <div>Hello, {name}!</div>;
+}
+```
+
+The tool is automatically discovered and rendered as a widget in ChatGPT.
+
+## Deploy
+
+```bash
+pnpm build
+node dist/http.js
 ```
 
 ## Learn More
 
-- [xmcp Documentation](https://xmcp.dev)
+- [xmcp Documentation](https://xmcp.dev/docs)
 - [ChatGPT Widgets Guide](https://xmcp.dev/docs/integrations/chatgpt)

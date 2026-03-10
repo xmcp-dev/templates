@@ -1,34 +1,90 @@
-# MCP React Widgets with xmcp + Tailwind CSS
+# xmcp MCP App Template
 
-This project demonstrates how to create React widgets for MCP applications using xmcp with Tailwind CSS for styling.
+Build styled React widgets for MCP applications using Tailwind CSS.
 
-## Metadata Example
+## Features
 
-```typescript
+- React component tools with Tailwind CSS v4 styling
+- PostCSS configuration included
+- CSP and domain metadata support for secure widget embedding
+- HTTP transport
+- Example tool: `weather` widget with Tailwind styling
+
+## Getting Started
+
+### 1. Create the project
+
+```bash
+npx create-xmcp-app --example mcp-app
+```
+
+### 2. Install & run
+
+```bash
+pnpm install
+pnpm dev
+```
+
+The MCP server will start with HTTP transport at `http://localhost:3001`.
+
+## Project Structure
+
+```
+├── src/
+│   └── tools/
+│       └── weather.tsx           # Weather widget with Tailwind
+├── globals.css                   # Tailwind global styles
+├── postcss.config.mjs            # PostCSS configuration
+├── xmcp.config.ts                # Server configuration
+├── package.json
+└── tsconfig.json
+```
+
+## Creating Styled Tools
+
+Create a `.tsx` file in `src/tools/` using Tailwind classes:
+
+```tsx
+import { z } from "zod";
+import { type InferSchema, type ToolMetadata } from "xmcp";
+
+export const schema = {
+  city: z.string().describe("The city to look up"),
+};
+
 export const metadata: ToolMetadata = {
-  name: "show-analytics",
-  description: "Display analytics dashboard",
+  name: "my-widget",
+  description: "Display a styled widget",
   _meta: {
     ui: {
       csp: {
-        connectDomains: ["https://api.analytics.com"],
-        resourceDomains: ["https://cdn.analytics.com"],
+        connectDomains: ["https://api.example.com"],
+        resourceDomains: ["https://cdn.example.com"],
       },
-      domain: "https://analytics-widget.example.com",
+      domain: "https://widget.example.com",
       prefersBorder: true,
     },
   },
 };
+
+export default function MyWidget({ city }: InferSchema<typeof schema>) {
+  return (
+    <div className="rounded-lg bg-white p-4 shadow">
+      <h2 className="text-lg font-bold">{city}</h2>
+    </div>
+  );
+}
 ```
 
-## Getting Started
+The `_meta.ui` field configures CSP policies and embedding behavior for your widget.
+
+## Deploy
 
 ```bash
-npm run dev
+pnpm build
+node dist/http.js
 ```
 
-This will start the development server with HTTP transport enabled.
+## Learn More
 
-## Tailwind CSS
-
-This template includes Tailwind CSS v4 with PostCSS for styling your widgets. The configuration is in `postcss.config.mjs` and global styles are in `globals.css`.
+- [xmcp Documentation](https://xmcp.dev/docs)

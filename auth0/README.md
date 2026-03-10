@@ -1,27 +1,36 @@
-# Auth0 Authentication with xmcp
+# xmcp Auth0 Template
 
-This project demonstrates how to create an authenticated MCP server using Auth0.
+An authenticated MCP server using Auth0 for JWT-based authentication.
+
+## Features
+
+- Auth0 JWT verification via JWKS endpoint
+- Session data accessible in tools via `getAuthInfo()`
+- OAuth discovery endpoints auto-registered
+- Example tools: `greet`, `random-number`, `whoami`
+- HTTP transport with middleware-based auth
 
 ## Getting Started
 
-### 1. Auth0 Setup
+### Prerequisites
 
-Before running the server, you need to configure Auth0:
+You need an [Auth0](https://auth0.com) account with:
+- An API (or create one)
+- A Machine-to-Machine application with access to your API
 
-1. Go to your [Auth0 Dashboard](https://manage.auth0.com)
-2. Create a new API or use an existing one
-3. Create a Machine-to-Machine application with access to your API
-4. Note your credentials (Domain, Client ID, Client Secret, Audience)
+### 1. Create the project
 
-### 2. Environment Variables
+```bash
+npx create-xmcp-app --example auth0
+```
 
-Copy the example environment file and fill in your credentials:
+### 2. Environment setup
 
 ```bash
 cp .env.example .env
 ```
 
-Then edit `.env` with your Auth0 credentials:
+Edit `.env` with your Auth0 credentials:
 
 ```bash
 DOMAIN=your-tenant.auth0.com
@@ -31,22 +40,19 @@ CLIENT_SECRET=your-m2m-client-secret
 BASE_URL=http://127.0.0.1:3001
 ```
 
-### 3. Run the Server
+### 3. Install & run
 
 ```bash
-npm run dev
-# or
+pnpm install
 pnpm dev
 ```
-
-This will start the MCP server with HTTP transport and Auth0 authentication enabled.
 
 ## How It Works
 
 1. MCP clients send requests with `Authorization: Bearer <token>` header
 2. The middleware verifies the JWT using Auth0's JWKS endpoint
 3. Valid sessions are stored in AsyncLocalStorage context
-4. Tools can access auth data via `getAuthInfo()`
+4. Tools access auth data via `getAuthInfo()`
 
 ## Using Auth Data in Tools
 
@@ -54,9 +60,8 @@ This will start the MCP server with HTTP transport and Auth0 authentication enab
 import { getAuthInfo } from "@xmcp-dev/auth0";
 
 export default function myTool() {
-  // Get auth info from JWT
   const authInfo = getAuthInfo();
-  
+
   console.log(authInfo.user.sub);      // User ID
   console.log(authInfo.user.email);    // User email
   console.log(authInfo.user.name);     // User name
@@ -70,25 +75,16 @@ export default function myTool() {
 
 ## OAuth Endpoints
 
-The plugin automatically registers these endpoints:
+The plugin automatically registers:
 
-- `GET /.well-known/oauth-protected-resource` - Resource server metadata
-- `GET /.well-known/oauth-authorization-server` - Authorization server metadata
+- `GET /.well-known/oauth-protected-resource` — Resource server metadata
+- `GET /.well-known/oauth-authorization-server` — Authorization server metadata
 
-## Monorepo Development
-
-This template is part of the xmcp-templates monorepo.
-
-### Commands
+## Deploy
 
 ```bash
-# From monorepo root
-pnpm dev          # Run all apps
-pnpm build        # Build all apps
-pnpm typecheck    # Type-check all apps
-
-# From this directory
-pnpm dev          # Run this app only
+pnpm build
+node dist/http.js
 ```
 
 ## Learn More
