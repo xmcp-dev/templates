@@ -1,0 +1,6 @@
+{
+  "name": "Express Starter",
+  "description": "An Express MCP server using xmcp's adapter",
+  "category": "framework",
+  "tags": ["express", "adapter", "http"]
+}
