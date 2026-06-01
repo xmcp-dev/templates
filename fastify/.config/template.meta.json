@@ -1,0 +1,6 @@
+{
+  "name": "Fastify Starter",
+  "description": "A Fastify MCP server using xmcp's adapter",
+  "category": "framework",
+  "tags": ["fastify", "adapter", "http"]
+}

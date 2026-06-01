@@ -17,7 +17,7 @@ A curated set of production-ready template projects for rapid MCP server develop
 npx create-xmcp-app --example <template-folder-name>
 ```
 
-Available folders live in the repository root (e.g., `nextjs`, `react`, `openai`, `typescript`).
+Available folders live in the repository root (e.g., `nextjs`, `fastify`, `react`).
 
 ## Contribute
 
