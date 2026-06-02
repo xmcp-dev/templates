@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@xmcp/*": ["./.xmcp/*"]
+    },
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["xmcp-env.d.ts", ".xmcp/**/*.d.ts", "src/**/*.ts"]
+}
