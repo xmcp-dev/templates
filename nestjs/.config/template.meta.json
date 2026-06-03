@@ -1,0 +1,6 @@
+{
+  "name": "NestJS Starter",
+  "description": "A NestJS MCP server using xmcp's adapter",
+  "category": "framework",
+  "tags": ["nestjs", "adapter", "http"]
+}
