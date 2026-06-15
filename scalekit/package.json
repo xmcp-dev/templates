@@ -2,8 +2,8 @@
   "name": "xmcp-scalekit",
   "version": "0.1.0",
   "private": true,
-  "description": "An MCP server with Scalekit authentication for B2B organizations. Per-user and per-org data isolation with optional RBAC.",
-  "keywords": ["scalekit", "authentication", "oauth", "per-user", "rbac", "mcp", "team"],
+  "description": "xmcp server with Scalekit authentication",
+  "keywords": ["scalekit", "authentication", "oauth", "per-user", "rbac", "mcp", "organizations"],
   "scripts": {
     "build": "xmcp build",
     "dev": "xmcp dev",
