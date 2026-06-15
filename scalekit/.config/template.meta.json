@@ -1,6 +1,6 @@
 {
   "name": "Scalekit",
-  "description": "An MCP server with Scalekit authentication",
+  "description": "An MCP server with Scalekit authentication for B2B organizations. Per-user and per-org data isolation with optional RBAC.",
   "category": "authentication",
-  "tags": ["scalekit", "oauth", "per-user", "rbac", "http", "organizations", "b2b"]
+  "tags": ["scalekit", "oauth", "b2b", "organizations", "rbac", "http"]
 }
