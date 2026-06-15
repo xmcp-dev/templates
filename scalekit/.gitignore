@@ -4,6 +4,10 @@ node_modules/
 # Build
 dist/
 
+# xmcp generated
+.xmcp/
+xmcp-env.d.ts
+
 # Env and secrets
 .env
 .env.local
