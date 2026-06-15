@@ -1,0 +1,6 @@
+{
+  "name": "Scalekit",
+  "description": "An MCP server with Scalekit authentication for per-user team access (share one URL, individual sign-in, private data + optional RBAC).",
+  "category": "authentication",
+  "tags": ["scalekit", "http"]
+}
