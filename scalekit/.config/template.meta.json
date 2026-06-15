@@ -1,6 +1,6 @@
 {
-  "name": "Scalekit Per-User Notes",
-  "description": "HTTP MCP server with Scalekit OAuth. Teammates share one server URL; each signs in individually and sees only their own data. Shows per-user/org isolation + optional RBAC (notes:read / notes:write).",
+  "name": "Scalekit",
+  "description": "An MCP server with Scalekit authentication",
   "category": "authentication",
-  "tags": ["scalekit", "oauth", "per-user", "rbac", "http", "team"]
+  "tags": ["scalekit", "oauth", "per-user", "rbac", "http", "organizations", "b2b"]
 }
