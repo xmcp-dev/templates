@@ -1,0 +1,12 @@
+diff --git a/dist/provider.js b/dist/provider.js
+index d09f1d1fcf6e7571da2800588b5b59eb480ca7d4..4c1986c38ada89e0e8ac4f3723391c0b20fd52e4 100644
+--- a/dist/provider.js
++++ b/dist/provider.js
+@@ -122,6 +122,7 @@ export function descopeProvider(config) {
+     const sdk = Descope({
+         projectId,
+         managementKey: config.managementKey,
++        baseUrl: new URL(config.issuerURL).origin, // PATCHED: upstream never forwards this, so the SDK always defaulted to api.descope.com regardless of the configured issuerURL's actual environment
+     });
+     const router = descopeRouter(config, projectId);
+     const rawMiddleware = descopeMiddleware(sdk);

@@ -1,0 +1,2 @@
+patchedDependencies:
+  '@xmcp-dev/descope': patches/@xmcp-dev__descope.patch

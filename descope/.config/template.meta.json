@@ -1,0 +1,6 @@
+{
+  "name": "Descope Authentication",
+  "description": "An MCP server with Descope authentication and tools to interact with the Descope client.",
+  "category": "authentication",
+  "tags": ["descope", "oauth", "mcp", "rbac", "http"]
+}

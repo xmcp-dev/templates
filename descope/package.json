@@ -1,0 +1,22 @@
+{
+  "name": "xmcp-descope",
+  "version": "0.1.0",
+  "private": true,
+  "description": "xmcp server with Descope authentication",
+  "keywords": ["descope", "authentication"],
+  "scripts": {
+    "build": "xmcp build",
+    "dev": "xmcp dev",
+    "start": "node dist/http.js"
+  },
+  "dependencies": {
+    "@xmcp-dev/descope": "latest",
+    "zod": "^4.0.10"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@xmcp-dev/compiler": "latest",
+    "typescript": "^5.9.3",
+    "xmcp": "latest"
+  }
+}
