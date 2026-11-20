@@ -1,0 +1,6 @@
+{
+  "name": "x402 Nano Monetization",
+  "description": "An MCP server with x402 payment middleware for XNO micropayments on Nano, with per-order binding and restart-safe replay protection",
+  "category": "monetization",
+  "tags": ["x402", "nano", "xno", "payments", "http"]
+}
