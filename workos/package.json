@@ -3,18 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "description": "xmcp server with WorkOS AuthKit authentication",
-  "keywords": ["workos", "authentication"],
+  "keywords": [
+    "workos",
+    "authentication"
+  ],
   "scripts": {
     "build": "xmcp build",
     "dev": "xmcp dev",
     "start": "node dist/http.js"
   },
   "dependencies": {
-    "@xmcp-dev/workos": "latest",
+    "@xmcp-dev/workos": "^1.0.2",
     "zod": "^4.3.5"
   },
   "devDependencies": {
+    "@xmcp-dev/compiler": "^1.13.2",
     "typescript": "^5.9.3",
-    "xmcp": "latest"
+    "xmcp": "^1.13.2"
   }
 }

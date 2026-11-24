@@ -1,5 +1,5 @@
 import Fastify from "fastify";
-import { xmcpHandler } from "@xmcp/adapter";
+import { xmcpHandler } from "../.xmcp/adapter";
 
 const app = Fastify({ logger: true });
 const port = Number(process.env.PORT ?? 3000);

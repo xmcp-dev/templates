@@ -4,7 +4,7 @@
   "private": true,
   "description": "A NestJS server with xmcp adapter integration",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.12"
   },
   "main": "dist/main.js",
   "scripts": {
@@ -25,7 +25,8 @@
     "@nestjs/cli": "^11.0.0",
     "@types/express": "^4.17.25",
     "@types/node": "^22.19.2",
+    "@xmcp-dev/compiler": "^1.13.2",
     "typescript": "^5.9.3",
-    "xmcp": "latest"
+    "xmcp": "^1.13.2"
   }
 }
