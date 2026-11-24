@@ -20,7 +20,8 @@
   "devDependencies": {
     "@types/react": "^19.2.3",
     "@types/react-dom": "^19.2.3",
+    "@xmcp-dev/compiler": "^1.13.2",
     "typescript": "^5.9.3",
-    "xmcp": "latest"
+    "xmcp": "^1.13.2"
   }
 }
