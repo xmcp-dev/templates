@@ -22,8 +22,9 @@
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.3",
     "@types/react-dom": "^19.2.3",
+    "@xmcp-dev/compiler": "^1.13.2",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
-    "xmcp": "latest"
+    "xmcp": "^1.13.2"
   }
 }
