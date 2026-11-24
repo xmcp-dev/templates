@@ -19,6 +19,8 @@ npx create-xmcp-app --example <template-folder-name>
 
 Available folders live in the repository root (e.g., `nextjs`, `fastify`, `react`).
 
+The templates target xmcp 1.x and require Node.js 22.12 or newer.
+
 ## Contribute
 
 Add your own template at the repository root, keep it minimal and documented, and open a PR. Community examples are welcome.
