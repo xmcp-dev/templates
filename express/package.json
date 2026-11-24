@@ -4,7 +4,7 @@
   "private": true,
   "description": "An Express server with xmcp adapter integration",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.12"
   },
   "scripts": {
     "build": "xmcp build && tsc",
@@ -19,8 +19,9 @@
   "devDependencies": {
     "@types/express": "^4.17.25",
     "@types/node": "^22.19.2",
+    "@xmcp-dev/compiler": "^1.13.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "xmcp": "latest"
+    "xmcp": "^1.13.2"
   }
 }
